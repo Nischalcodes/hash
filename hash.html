@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text to SHA-256 Hash</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+    }
+    #hashResult {
+      margin-top: 20px;
+      word-break: break-all;
+      font-family: monospace;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>SHA-256 Text Hasher</h2>
+  <input type="text" id="inputText" placeholder="Enter text to hash" />
+  <br><br>
+  <button onclick="generateHash()">Generate Hash</button>
+  <div id="hashResult"></div>
+
+  <script>
+    function generateHash() {
+      const text = document.getElementById("inputText").value;
+      const hash = CryptoJS.SHA256(text).toString(CryptoJS.enc.Base64);
+      document.getElementById("hashResult").innerText = hash;
+    }
+  </script>
+</body>
+</html>
